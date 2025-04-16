@@ -41,6 +41,11 @@ export const Header = () => {
                   РЭБ
                 </NavLink>
               </li>
+              <li>
+                <NavLink to="/channels" className={linkClass}>
+                  Управление каналами
+                </NavLink>
+              </li>
             </ul>
           </nav>
           <ToggleTheme />

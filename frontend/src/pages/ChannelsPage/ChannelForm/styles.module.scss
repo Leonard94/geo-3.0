@@ -1,0 +1,29 @@
+.container {
+  padding: 20px;
+  width: 450px;
+  max-width: 100%;
+}
+
+.title {
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: var(--text-primary);
+}
+
+.form {
+  width: 100%;
+}
+
+.formFields {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}

@@ -6,6 +6,7 @@
 
 # Запуск для разработки
 
+0. Запустить docker desktop
 1. <code>npm run start:db</code>
 2. <code>npm run start:backend</code>
 3. <code>npm run start:frontend</code>

@@ -10,6 +10,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Layout } from "../Layout/Layout";
 import { RabPage } from "../../pages/RabPage/RabPage";
+import { ChannelsPage } from "../../pages/ChannelsPage/ChannelsPage";
 
 export const App = () => {
   return (
@@ -54,6 +55,14 @@ export const App = () => {
           element={
             <Layout>
               <RabPage />
+            </Layout>
+          }
+        />
+        <Route
+          path="/channels"
+          element={
+            <Layout>
+              <ChannelsPage />
             </Layout>
           }
         />

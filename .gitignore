@@ -4,6 +4,10 @@ node_modules/
 
 # Дампы
 dump
+delete_front
+delete_back
+copy_files_front.py
+copy_files_back.py
 
 # Логи
 logs

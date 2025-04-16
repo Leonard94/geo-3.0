@@ -1,19 +1,20 @@
-import React from 'react'
-import styles from './styles.module.scss'
-import classnames from 'classnames'
+import React from "react";
+import styles from "./styles.module.scss";
+import classnames from "classnames";
 
 type TProps = {
-  type: string
-  name?: string
-  value: string
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
-  placeholder?: string
-  label?: string
-  fullWidth?: boolean
-  error?: string | null
-  onFocus?: () => void
-  style?: React.CSSProperties
-}
+  type: string;
+  name?: string;
+  value: string;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  placeholder?: string;
+  label?: string;
+  fullWidth?: boolean;
+  error?: string | null;
+  onFocus?: () => void;
+  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
+  style?: React.CSSProperties;
+};
 
 export const Input: React.FC<TProps> = (props) => {
   const {
@@ -25,12 +26,13 @@ export const Input: React.FC<TProps> = (props) => {
     label,
     error,
     onFocus,
+    onBlur,
     style,
-  } = props
+  } = props;
 
   const inputClass = classnames(styles.input, {
     [styles.input_invalid]: error,
-  })
+  });
 
   return (
     <div style={style}>
@@ -43,8 +45,9 @@ export const Input: React.FC<TProps> = (props) => {
         placeholder={placeholder}
         className={inputClass}
         onFocus={onFocus}
+        onBlur={onBlur}
       />
       {error && <p className={styles.message}>{error}</p>}
     </div>
-  )
-}
+  );
+};

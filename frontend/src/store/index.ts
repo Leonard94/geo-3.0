@@ -5,6 +5,7 @@ import incidentsSlice from "./incidents/incidentsSlice";
 import customObjectTypesSlice from "./customObjectTypes/customObjectTypesSlice";
 import customIncidentTypesSlice from "./customIncidentsTypes/customIncidentsTypesSlice";
 import rabSlice from "./rab/rabSlice";
+import channelsSlice from "./channels/channelsSlice";
 
 export const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ export const store = configureStore({
     objectTypes: customObjectTypesSlice,
     incidentTypes: customIncidentTypesSlice,
     rab: rabSlice,
+    channels: channelsSlice,
   },
 });
 
