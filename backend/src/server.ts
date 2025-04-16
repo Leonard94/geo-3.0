@@ -3,6 +3,8 @@ import cors from "cors";
 import dotenv from "dotenv";
 import { testConnection } from "./config/db";
 import channelRouter from "./routes/channel";
+import messageRouter from "./routes/message";
+
 dotenv.config();
 
 const app: Application = express();
@@ -18,6 +20,7 @@ testConnection().catch((err) => {
 });
 
 app.use("/api/channels", channelRouter);
+app.use("/api/messages", messageRouter);
 
 app.get("/", (_req: Request, res: Response) => {
   res.send("API для работы с каналами");

@@ -11,6 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Layout } from "../Layout/Layout";
 import { RabPage } from "../../pages/RabPage/RabPage";
 import { ChannelsPage } from "../../pages/ChannelsPage/ChannelsPage";
+import { OnlineMessages } from "../OnlineMessages/OnlineMessages";
 
 export const App = () => {
   return (
@@ -75,6 +76,7 @@ export const App = () => {
         pauseOnHover
         theme="light"
       />
+      {false && <OnlineMessages />}
     </div>
   );
 };

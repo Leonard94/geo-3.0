@@ -48,6 +48,8 @@ $text-danger: #bd3030;
   --input-placeholder-color: #d2d2d2;
   --input-background: #fff;
   --input-color: black;
+
+  --messages-bg: #fff;
 }
 
 [data-theme="dark"] {
@@ -89,4 +91,6 @@ $text-danger: #bd3030;
   --input-placeholder-color: rgb(98, 98, 98);
   --input-background: #2F3845;
   --input-color: white;
+
+  --messages-bg: #1C242C;
 }

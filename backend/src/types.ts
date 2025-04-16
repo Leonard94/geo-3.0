@@ -13,3 +13,9 @@ export interface IApiResponse {
   data: any;
   error?: string;
 }
+
+export interface IMessage {
+  id: number;
+  message: string;
+  message_sending_time_bot: Date;
+}
