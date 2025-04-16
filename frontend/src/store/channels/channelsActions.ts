@@ -10,8 +10,12 @@ export const fetchChannels = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await axios.get(`${API_URL}/${API_ROUT}`);
-      return Array.isArray(response.data.data)
-        ? response.data.data
+      const normalizedData = response.data.data.map((channel: IChannel) => ({
+        ...channel,
+        url: channel.url.replace("https://", ""),
+      }));
+      return Array.isArray(normalizedData)
+        ? normalizedData
         : ([] as IChannel[]);
     } catch (error) {
       if (axios.isAxiosError(error)) {

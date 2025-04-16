@@ -37,20 +37,35 @@ class Channel {
 
   static async create(channelData: IChannel): Promise<IChannel> {
     try {
-      const { name, description } = channelData;
+      const {
+        name,
+        url,
+        num_of_messages_downloaded = 1,
+        language = "русский",
+        region = "Белгородская область",
+      } = channelData;
 
       const [result] = await pool.query<ResultSetHeader>(
         `
-        INSERT INTO channel_list_for_user (name, description) 
-        VALUES (?, ?)
-      `,
-        [name, description || null]
+        INSERT INTO channel_list_for_user (name, url, num_of_messages_downloaded, language, region) 
+        VALUES (?, ?, ?, ?, ?)
+        `,
+        [
+          name,
+          url || null,
+          num_of_messages_downloaded || null,
+          language || null,
+          region || null,
+        ]
       );
 
       return {
         id: result.insertId,
         name,
-        description,
+        url,
+        num_of_messages_downloaded,
+        language,
+        region,
       };
     } catch (error) {
       console.error("Ошибка при создании канала:", error);
@@ -63,15 +78,28 @@ class Channel {
     channelData: IChannel
   ): Promise<IChannel | null> {
     try {
-      const { name, description } = channelData;
+      const {
+        name,
+        url,
+        num_of_messages_downloaded = 1,
+        language = "русский",
+        region = "Белгородская область",
+      } = channelData;
 
       const [result] = await pool.query<ResultSetHeader>(
         `
         UPDATE channel_list_for_user 
-        SET name = ?, description = ?
+        SET name = ?, url = ?, num_of_messages_downloaded = ?, language = ?, region = ?
         WHERE id = ?
-      `,
-        [name, description || null, id]
+        `,
+        [
+          name,
+          url || null,
+          num_of_messages_downloaded || null,
+          language || null,
+          region || null,
+          id,
+        ]
       );
 
       if (result.affectedRows === 0) {
@@ -81,7 +109,10 @@ class Channel {
       return {
         id,
         name,
-        description,
+        url,
+        num_of_messages_downloaded,
+        language,
+        region,
       };
     } catch (error) {
       console.error(`Ошибка при обновлении канала с ID ${id}:`, error);

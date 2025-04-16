@@ -2,6 +2,22 @@ import { Request, Response } from "express";
 import Channel from "../models/channels";
 import { IChannel } from "../types";
 
+const formatTelegramUrl = (url: string | undefined): string | undefined => {
+  if (!url) {
+    return undefined;
+  }
+
+  if (url.startsWith("t./me/")) {
+    return "https://t.me/" + url.substring(6);
+  } else if (url.startsWith("t.me/")) {
+    return "https://t.me/" + url.substring(5);
+  } else if (!url.startsWith("https://t.me/")) {
+    return "https://t.me/" + url;
+  }
+
+  return url;
+};
+
 export const getAllChannels = async (
   req: Request,
   res: Response
@@ -73,9 +89,12 @@ export const createChannel = async (
       return;
     }
 
+    const url = formatTelegramUrl(req.body.url);
+
     const channelData: IChannel = {
       name: req.body.name,
-      description: req.body.description,
+      url: url,
+      num_of_messages_downloaded: 0,
     };
 
     const channel = await Channel.create(channelData);
@@ -115,10 +134,12 @@ export const updateChannel = async (
       });
       return;
     }
+    
+    const url = formatTelegramUrl(req.body.url);
 
     const channelData: IChannel = {
       name: req.body.name,
-      description: req.body.description,
+      url: url,
     };
 
     const channel = await Channel.update(id, channelData);

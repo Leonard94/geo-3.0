@@ -1,9 +1,10 @@
 export interface IChannel {
   id?: number;
   name: string;
-  description?: string;
-  created_at?: Date;
-  updated_at?: Date;
+  url?: string;
+  num_of_messages_downloaded?: number;
+  language?: string;
+  region?: string;
 }
 
 export interface IApiResponse {

@@ -76,6 +76,7 @@ export const ChannelsManager: React.FC = () => {
           toast.success("Канал успешно обновлен");
           setIsFormOpen(false);
           setEditingId(null);
+          dispatch(fetchChannels());
         })
         .catch((error) => {
           toast.error(
@@ -88,6 +89,7 @@ export const ChannelsManager: React.FC = () => {
         .then(() => {
           toast.success("Канал успешно добавлен");
           setIsFormOpen(false);
+          dispatch(fetchChannels());
         })
         .catch((error) => {
           toast.error(
@@ -110,6 +112,7 @@ export const ChannelsManager: React.FC = () => {
           toast.success("Канал успешно удален");
           setIsConfirmOpen(false);
           setDeletingChannelId(null);
+          dispatch(fetchChannels());
         })
         .catch((error) => {
           toast.error(
