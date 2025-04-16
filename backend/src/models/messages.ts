@@ -1,4 +1,4 @@
-import { pool } from "../config/db";
+import { pool } from "../config/db1";
 import { IMessage } from "../types";
 import { RowDataPacket } from "mysql2";
 

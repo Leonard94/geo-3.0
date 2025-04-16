@@ -1,4 +1,4 @@
-import { pool } from "../config/db";
+import { pool } from "../config/db1";
 import { IChannel } from "../types";
 import { ResultSetHeader, RowDataPacket } from "mysql2";
 

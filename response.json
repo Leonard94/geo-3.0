@@ -1,0 +1,50 @@
+[
+  {
+    "id": "rab-1",
+    "name": "РЭБ Точка №1",
+    "type": "подавитель",
+    "active": true,
+    "latitude": "55.751244",
+    "longitude": "37.618423",
+    "color": "rgb(255, 0, 0)",
+    "altitude": "150",
+    "rayDefinitions": [
+      {
+        "name": "Луч 1",
+        "distance": 5000,
+        "azimuth": 45,
+        "openingAngle": 30,
+        "visible": true,
+        "color": "rgb(255, 0, 0)"
+      },
+      {
+        "name": "Луч 2",
+        "distance": 3000,
+        "azimuth": 135,
+        "openingAngle": 45,
+        "visible": true,
+        "color": "rgb(0, 255, 0)"
+      }
+    ]
+  },
+  {
+    "id": "rab-2",
+    "name": "РЭБ Точка №2",
+    "type": "обнаружитель",
+    "active": true,
+    "latitude": "55.755814",
+    "longitude": "37.617635",
+    "color": "rgb(0, 0, 255)",
+    "altitude": "100",
+    "rayDefinitions": [
+      {
+        "name": "Луч 1",
+        "distance": 4000,
+        "azimuth": 270,
+        "openingAngle": 60,
+        "visible": true,
+        "color": "rgb(0, 0, 255)"
+      }
+    ]
+  }
+]
