@@ -24,10 +24,16 @@ export const getAllChannels = async (
 ): Promise<void> => {
   try {
     const channels = await Channel.getAll();
+
+    const transformedChannels = channels.map((channel) => ({
+      ...channel,
+      isActive: channel.isActive === 1,
+    }));
+
     res.status(200).json({
       success: true,
       count: channels.length,
-      data: channels,
+      data: transformedChannels,
     });
   } catch (error) {
     console.error("Ошибка в контроллере getAllChannels:", error);
@@ -89,19 +95,30 @@ export const createChannel = async (
       return;
     }
 
+    if (req.body.isActive === undefined) {
+      res.status(400).json({
+        success: false,
+        error: "Пожалуйста, укажите статус активности канала",
+      });
+      return;
+    }
+
     const url = formatTelegramUrl(req.body.url);
 
     const channelData: IChannel = {
       name: req.body.name,
       url: url,
-      num_of_messages_downloaded: 0,
+      isActive: req.body.isActive ? 1 : 0,
     };
 
     const channel = await Channel.create(channelData);
 
     res.status(201).json({
       success: true,
-      data: channel,
+      data: {
+        ...channel,
+        isActive: channel.isActive === 1,
+      },
     });
   } catch (error) {
     console.error("Ошибка в контроллере createChannel:", error);
@@ -134,12 +151,21 @@ export const updateChannel = async (
       });
       return;
     }
-    
+
+    if (req.body.isActive === undefined) {
+      res.status(400).json({
+        success: false,
+        error: "Пожалуйста, укажите статус активности канала",
+      });
+      return;
+    }
+
     const url = formatTelegramUrl(req.body.url);
 
     const channelData: IChannel = {
       name: req.body.name,
       url: url,
+      isActive: req.body.isActive ? 1 : 0,
     };
 
     const channel = await Channel.update(id, channelData);
@@ -154,7 +180,10 @@ export const updateChannel = async (
 
     res.status(200).json({
       success: true,
-      data: channel,
+      data: {
+        ...channel,
+        isActive: channel.isActive === 1,
+      },
     });
   } catch (error) {
     console.error("Ошибка в контроллере updateChannel:", error);

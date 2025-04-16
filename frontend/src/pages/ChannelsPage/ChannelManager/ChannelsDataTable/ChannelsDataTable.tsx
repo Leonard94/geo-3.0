@@ -72,6 +72,11 @@ export const ChannelsDataTable: React.FC<IProps> = ({
         </a>
       );
     }
+
+    if (column.id === "isActive") {
+      return value ? "Да" : "Нет";
+    }
+
     return value;
   };
 

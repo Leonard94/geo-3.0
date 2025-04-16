@@ -10,6 +10,7 @@ import {
   validateChannelName,
   validateChannelUrl,
 } from "../../../utils/channels.utils";
+import { FormControlLabel, Switch } from "@mui/material";
 
 interface ChannelFormProps {
   isOpen: boolean;
@@ -29,6 +30,7 @@ export const ChannelForm: React.FC<ChannelFormProps> = ({
   >({
     name: "",
     url: "",
+    isActive: false,
   });
   const [errors, setErrors] = useState<IChannelValidationErrors>({});
   const [touched, setTouched] = useState<{ name: boolean; url: boolean }>({
@@ -49,11 +51,13 @@ export const ChannelForm: React.FC<ChannelFormProps> = ({
         id: initialData.id,
         name: initialData.name,
         url: initialData.url,
+        isActive: initialData.isActive,
       });
     } else {
       setFormData({
         name: "",
         url: "",
+        isActive: false,
       });
     }
     setErrors({});
@@ -140,6 +144,13 @@ export const ChannelForm: React.FC<ChannelFormProps> = ({
     }
   };
 
+  const handleSwitchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData((prev) => ({
+      ...prev,
+      isActive: e.target.checked,
+    }));
+  };
+
   useEffect(() => {
     if (initialData?.url) {
       setFormData((prev) => ({
@@ -167,6 +178,16 @@ export const ChannelForm: React.FC<ChannelFormProps> = ({
               placeholder="Введите название канала"
               error={errors.name}
               fullWidth
+            />
+            <FormControlLabel
+              control={
+                <Switch
+                  checked={formData.isActive}
+                  onChange={handleSwitchChange}
+                  color="primary"
+                />
+              }
+              label={<span className={styles.switchLabel}>Активно</span>}
             />
             <div className={styles.urlInputContainer}>
               <div className={styles.urlPrefix}>t.me/</div>

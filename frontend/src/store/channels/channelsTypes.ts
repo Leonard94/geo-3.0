@@ -2,6 +2,7 @@ export interface IChannel {
   id: string;
   name: string;
   url: string;
+  isActive: boolean;
 }
 
 export interface IChannelsState {

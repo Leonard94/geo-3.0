@@ -1,3 +1,5 @@
+@use "../../../styles/typography.scss" as *;
+
 .container {
   padding: 20px;
   width: 450px;
@@ -45,4 +47,8 @@
 
 .urlInputContainer input {
   padding-left: 40px !important;
+}
+
+.switchLabel {
+  @include label;
 }

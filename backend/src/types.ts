@@ -2,7 +2,7 @@ export interface IChannel {
   id?: number;
   name: string;
   url?: string;
-  num_of_messages_downloaded?: number;
+  isActive?: number;
   language?: string;
   region?: string;
 }

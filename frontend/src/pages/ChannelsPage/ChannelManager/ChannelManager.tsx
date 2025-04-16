@@ -26,7 +26,13 @@ const CHANNEL_COLUMNS = [
   {
     id: "url",
     label: "URL канала",
-    width: 400,
+    width: 300,
+  },
+  {
+    id: "isActive",
+    label: "Активно",
+    width: 150,
+    format: (value: boolean) => (value ? "Да" : "Нет"),
   },
 ];
 

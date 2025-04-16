@@ -40,22 +40,22 @@ class Channel {
       const {
         name,
         url,
-        num_of_messages_downloaded = 1,
+        isActive  = 0,
         language = "русский",
         region = "Белгородская область",
       } = channelData;
 
       const [result] = await pool.query<ResultSetHeader>(
         `
-        INSERT INTO channel_list_for_user (name, url, num_of_messages_downloaded, language, region) 
+        INSERT INTO channel_list_for_user (name, url, isActive, language, region) 
         VALUES (?, ?, ?, ?, ?)
         `,
         [
           name,
-          url || null,
-          num_of_messages_downloaded || null,
-          language || null,
-          region || null,
+          url,
+          isActive,
+          language,
+          region,
         ]
       );
 
@@ -63,7 +63,7 @@ class Channel {
         id: result.insertId,
         name,
         url,
-        num_of_messages_downloaded,
+        isActive,
         language,
         region,
       };
@@ -81,7 +81,7 @@ class Channel {
       const {
         name,
         url,
-        num_of_messages_downloaded = 1,
+        isActive,
         language = "русский",
         region = "Белгородская область",
       } = channelData;
@@ -89,15 +89,15 @@ class Channel {
       const [result] = await pool.query<ResultSetHeader>(
         `
         UPDATE channel_list_for_user 
-        SET name = ?, url = ?, num_of_messages_downloaded = ?, language = ?, region = ?
+        SET name = ?, url = ?, isActive = ?, language = ?, region = ?
         WHERE id = ?
         `,
         [
           name,
           url || null,
-          num_of_messages_downloaded || null,
-          language || null,
-          region || null,
+          isActive,
+          language,
+          region,
           id,
         ]
       );
@@ -110,7 +110,7 @@ class Channel {
         id,
         name,
         url,
-        num_of_messages_downloaded,
+        isActive,
         language,
         region,
       };
