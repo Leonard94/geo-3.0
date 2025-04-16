@@ -1,0 +1,46 @@
+.tableContainer {
+  border-radius: 14px;
+
+  svg path {
+    fill: var(--icon-stroke);
+  }
+
+  :global {
+    .MuiTableHead-root {
+      .MuiTableRow-root {
+        background-color: var(--table-column-title-background);
+
+        .MuiTableCell-root {
+          font-weight: 400;
+          font-size: 14px;
+          color: var(--table-column-title-color);
+        }
+
+        .MuiTableCell-root {
+          font-weight: 600;
+          color: var(--table-column-title-color);
+          border-bottom: 1px solid var(--table-devider);
+        }
+      }
+    }
+
+    .MuiTableBody-root {
+      background: var(--table-cell-background);
+
+      .MuiTableRow-root {
+        .MuiTableCell-root {
+          color: var(--table-color);
+          border-bottom: 1px solid var(--table-devider);
+        }
+
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.04);
+        }
+      }
+    }
+
+    .MuiPaper-root {
+      box-shadow: none;
+    }
+  }
+}

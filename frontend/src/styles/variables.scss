@@ -1,0 +1,90 @@
+$bg-main: #fff;
+$bg-second: #f5f5f5;
+$bg-accent: #ffc017;
+$bg-dark: #191919;
+$bg-grey: #8d8d8d;
+
+$text-main: #191919;
+$text-second: #757575;
+$text-light: #fff;
+$text-danger: #bd3030;
+
+:root {
+  --app-bg: #f6f6f8;
+  --bg-main: #fff;
+  --bg-content-main: #fff;
+  --title-main: #1c2735;
+
+  --header-link: #8C94A0;
+  --header-link-hover: #4B5CE4;
+  --header-link-active: #4B5CE4;
+  --header-link-active-background: #f6f6f8;
+
+  --table-column-title-background: #f5f6f8;
+  --table-column-title-color: #5e6a7a;
+  --table-cell-background: #fff;
+  --table-devider: #e0e0e0;
+  --table-color: black;
+
+  --button-primary-background: #4b5ce4;
+  --button-primary-color: white;
+  --button-primary-color--disabled: #939393;
+  --button-primary-background--disabled: #f5f5f5;
+  --button-default-background: inherit;
+  --button-default-color: #4b5ce4;
+  --button-default-color--hover: rgb(51, 51, 51);
+  --button-default-color--disabled: #939393;
+  --button-default-background--disabled: #f5f5f5;
+  --button-default-border: #4b5ce4;
+  --button-default-border--disabled: #939393;
+
+  --icon-stroke: black;
+  --text-danger: #bd3030;
+
+  --input-caret-color: #4b5ce4;
+  --input--active: #4b5ce4;
+  --input-border: #b5b5b5;
+  --input-placeholder-color: #d2d2d2;
+  --input-background: #fff;
+  --input-color: black;
+}
+
+[data-theme="dark"] {
+  --app-bg: #222A33;
+  --bg-main: #1C242C;
+  --bg-content-main: #242E3B;
+  --title-main: #fff;
+
+  --header-link: rgb(181, 181, 181);
+  --header-link-hover: white;
+  --header-link-active: white;
+  --header-link-active-background: #242E3B;
+
+  --table-column-title-background: #2F3845;
+  --table-column-title-color: #94999F;
+  --table-cell-background: #1D2630;
+  --table-devider: #3D4147;
+  --table-color: #fff;
+
+  --button-primary-background: #4A7ED6;
+  --button-primary-color: white;
+  --button-primary-color--disabled: #939393;
+  --button-primary-background--disabled: #f5f5f5;
+  --button-default-background: inherit;
+  --button-default-color: #4b5ce4;
+  --button-default-color--hover: rgb(51, 51, 51);
+  --button-default-color--disabled: #939393;
+  --button-default-background--disabled: #f5f5f5;
+  --button-default-border: #4b5ce4;
+  --button-default-border--disabled: #939393;
+
+  --icon-stroke: white;
+  --text-danger: #bd3030;
+
+  --input-caret-color: #4b5ce4;
+  --input--active: #4b5ce4;
+  --input-border: #1D2630;
+  --input-placeholder-color: rgb(98, 98, 98);
+  --input-background: #2F3845;
+  --input-color: white;
+}

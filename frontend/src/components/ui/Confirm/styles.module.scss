@@ -1,0 +1,45 @@
+.confirm {
+  max-width: 400px;
+  color: var(--input-color);
+  background: var(--app-bg);
+  line-height: 140%;
+
+  .title {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .subtitle {
+    font-size: 12px;
+    margin-bottom: 20px;
+  }
+
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .btn {
+    padding: 12px 20px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    color: var( --button-primary-color);
+
+    &:first-child {
+        background: var(--button-default-background)
+    }
+
+    &:last-child {
+      background: var(--text-danger);
+    }
+
+    &:hover {
+        opacity: 0.9;
+    }
+
+    &:active {
+        transform: scale(0.95);
+    }
+  }
+}

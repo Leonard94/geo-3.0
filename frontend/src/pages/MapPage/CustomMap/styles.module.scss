@@ -1,0 +1,24 @@
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background: var(
+    --bg-main
+  );
+}
+
+.custom_map {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr;
+  height: 100%;
+
+  margin: 20px;
+}
+
+.map_content {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+}

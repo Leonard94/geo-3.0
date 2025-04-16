@@ -1,0 +1,12 @@
+.themeToggle {
+  color: var(--text);
+  transition: color 0.3s ease;
+
+  &:hover {
+    background-color: var(--secondary);
+  }
+
+  svg path {
+    stroke: var(--icon-stroke);
+  }
+}

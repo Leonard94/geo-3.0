@@ -1,0 +1,48 @@
+@use "../../../styles/typography.scss" as *;
+@use "../../../styles/variables.scss" as *;
+
+.label {
+  display: block;
+  margin-bottom: 5px;
+  position: relative;
+
+  @include label;
+}
+
+.input {
+  padding: 10px;
+  width: 100%;
+
+  border: 1px solid var(--input-border);
+  border-radius: 5px;
+  background: var(--input-background);
+
+  @include input;
+
+  color: var(--input-color);
+
+  caret-color: var(--input-caret-color);
+  transition: all 0.3s ease;
+
+  &_invalid {
+    border-color: $text-danger;
+  }
+
+  &::placeholder {
+    color: var(--input-placeholder-color);
+    font-size: 12px;
+    font-weight: 300;
+  }
+
+  &:focus {
+    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.05);
+    border-color: var(--input-caret-color);
+  }
+}
+
+.message {
+  padding: 5px 0 0 10px;
+  font-size: 12px;
+  position: absolute;
+  color: var(--text-danger);
+}

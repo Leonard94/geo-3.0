@@ -1,0 +1,90 @@
+@use "../../../../styles/typography.scss" as *;
+
+.btn_row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btn {
+  padding: 9px 22px;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  line-height: 140%;
+  transition: all 0.2s ease;
+  background: #017bfb;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+
+  &:first-child {
+    background: #90b8e3;
+  }
+}
+
+.fieldContainer {
+  .label {
+    @include label;
+  }
+
+  :global {
+    svg path {
+      fill: var(--icon-stroke);
+    }
+
+    .MuiInputBase-root {
+      color: var(--input-color);
+      background: var(--input-background);
+    }
+
+    .MuiSelect-select {
+      padding: 10px !important;
+    }
+  }
+}
+
+.error {
+  color: var(--text-danger);
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.mapContainer {
+  width: 300px;
+}
+
+.fieldContainer {
+  input[type="color"] {
+    padding: 0;
+    border: none;
+    border-radius: 4px;
+    width: 100%;
+    height: 40px;
+    cursor: pointer;
+    
+    &::-webkit-color-swatch-wrapper {
+      padding: 0;
+    }
+    
+    &::-webkit-color-swatch {
+      border: none;
+      border-radius: 4px;
+    }
+  }
+}

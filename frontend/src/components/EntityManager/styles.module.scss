@@ -1,0 +1,25 @@
+.wrapper {
+  overflow-y: auto;
+  height: calc(100vh - 60px);
+  padding: 20px;
+}
+
+.content {
+  background: var(--bg-content-main);
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.top_row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 20px;
+
+  h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--title-main);
+  }
+}
