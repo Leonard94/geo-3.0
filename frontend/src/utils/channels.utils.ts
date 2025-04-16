@@ -23,11 +23,22 @@ export const validateChannelName = (name: string): string | null => {
 
 export const validateChannelUrl = (url: string): string | null => {
   if (!url.trim()) {
-    return "URL канала обязателен для заполнения";
+    return "Имя канала обязательно для заполнения";
   }
 
-  if (url.startsWith("t.me/") && url.length < 10) {
-    return "Неполный URL канала Telegram";
+  let channelName = url;
+  if (url.startsWith("t.me/")) {
+    channelName = url.substring(5);
+  }
+
+  if (channelName.length < 5) {
+    return "Имя канала должно содержать минимум 5 символов";
+  }
+
+  const telegramChannelRegex = /^[a-zA-Z0-9_\-\+\.]+$/;
+
+  if (!telegramChannelRegex.test(channelName)) {
+    return "Некорректный формат имени канала. Используйте только буквы, цифры и символ подчеркивания";
   }
 
   return null;

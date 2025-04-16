@@ -27,3 +27,22 @@
   gap: 10px;
   margin-top: 10px;
 }
+
+.urlInputContainer {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.urlPrefix {
+  position: absolute;
+  left: 10px;
+  bottom: 12px;
+  color: #666;
+  font-size: 12px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.urlInputContainer input {
+  padding-left: 40px !important;
+}

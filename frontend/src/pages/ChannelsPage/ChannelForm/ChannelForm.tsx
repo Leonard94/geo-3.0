@@ -36,6 +36,13 @@ export const ChannelForm: React.FC<ChannelFormProps> = ({
     url: false,
   });
 
+  const extractChannelName = (fullUrl: string): string => {
+    if (fullUrl.startsWith("t.me/")) {
+      return fullUrl.substring(5);
+    }
+    return fullUrl;
+  };
+
   useEffect(() => {
     if (initialData) {
       setFormData({
@@ -55,7 +62,19 @@ export const ChannelForm: React.FC<ChannelFormProps> = ({
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+
+    if (name === "url") {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    } else {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
+
     setTouched((prev) => ({ ...prev, [name]: true }));
 
     if (touched[name as keyof typeof touched]) {
@@ -64,7 +83,7 @@ export const ChannelForm: React.FC<ChannelFormProps> = ({
       if (name === "name") {
         fieldError = validateChannelName(value);
       } else if (name === "url") {
-        fieldError = validateChannelUrl(value);
+        fieldError = validateChannelUrl("t.me/" + value);
       }
 
       setErrors((prev) => ({
@@ -84,7 +103,7 @@ export const ChannelForm: React.FC<ChannelFormProps> = ({
     if (name === "name") {
       fieldError = validateChannelName(value);
     } else if (name === "url") {
-      fieldError = validateChannelUrl(value);
+      fieldError = validateChannelUrl("t.me/" + value);
     }
 
     setErrors((prev) => ({
@@ -94,7 +113,12 @@ export const ChannelForm: React.FC<ChannelFormProps> = ({
   };
 
   const validate = (): boolean => {
-    const validationErrors = validateChannel(formData);
+    const validationData = {
+      ...formData,
+      url: "t.me/" + formData.url,
+    };
+
+    const validationErrors = validateChannel(validationData);
     setErrors(validationErrors);
     setTouched({ name: true, url: true });
 
@@ -105,9 +129,25 @@ export const ChannelForm: React.FC<ChannelFormProps> = ({
     e.preventDefault();
 
     if (validate()) {
-      onSubmit(formData);
+      const submissionData = {
+        ...formData,
+        url: formData.url.startsWith("t.me/")
+          ? formData.url
+          : "t.me/" + formData.url,
+      };
+
+      onSubmit(submissionData);
     }
   };
+
+  useEffect(() => {
+    if (initialData?.url) {
+      setFormData((prev) => ({
+        ...prev,
+        url: extractChannelName(initialData.url),
+      }));
+    }
+  }, [initialData]);
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
@@ -128,17 +168,20 @@ export const ChannelForm: React.FC<ChannelFormProps> = ({
               error={errors.name}
               fullWidth
             />
-            <Input
-              type="text"
-              name="url"
-              value={formData.url}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              label="URL канала"
-              placeholder="https://example.com или t.me/channel"
-              error={errors.url}
-              fullWidth
-            />
+            <div className={styles.urlInputContainer}>
+              <div className={styles.urlPrefix}>t.me/</div>
+              <Input
+                type="text"
+                name="url"
+                value={formData.url}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                label="Имя канала"
+                placeholder="channel_name"
+                error={errors.url}
+                fullWidth
+              />
+            </div>
             <div className={styles.buttons}>
               <Button typeView="default" type="button" onClick={onClose}>
                 Отмена
